@@ -1,0 +1,98 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "23dbcdd3-df4e-46df-ab67-d5e51deec794": {
+        "id": "23dbcdd3-df4e-46df-ab67-d5e51deec794",
+        "parent": null,
+        "name": "hiru0508_creates3",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "31309a03-01a0-4cf6-9dc4-6bfe493a41b6"
+        ],
+        "isRemovable": false,
+        "filePath": "hiru0508_creates3"
+      },
+      "31309a03-01a0-4cf6-9dc4-6bfe493a41b6": {
+        "id": "31309a03-01a0-4cf6-9dc4-6bfe493a41b6",
+        "parent": "23dbcdd3-df4e-46df-ab67-d5e51deec794",
+        "name": "lambda.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "hiru0508_creates3/lambda.js",
+        "code": "let AWS = require('aws-sdk');\nconst s3 = new AWS.S3();\n\nexports.handler = function (event, context, callback) {\n    s3.listObjects({\n        'Bucket': 'hiru.test123',\n        'MaxKeys': 10,\n        'Prefix': ''\n    }).promise()\n        .then(data => {\n            console.log(data);           // successful response\n            /*\n            data = {\n                Contents: [\n                    {\n                       ETag: \"\\\"70ee1738b6b21e2c8a43f3a5ab0eee71\\\"\",\n                       Key: \"example1.jpg\",\n                       LastModified: \"<Date Representation>\",\n                       Owner: {\n                          DisplayName: \"myname\",\n                          ID: \"12345example25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc\"\n                       },\n                       Size: 11,\n                       StorageClass: \"STANDARD\"\n                    },\n                    // {...}\n                ]\n            }\n            */\n        })\n        .catch(err => {\n            console.log(err, err.stack); // an error occurred\n        });\n\n    callback(null, { \"message\": \"Successfully executed\" });\n}",
+        "config": {
+          "runtime": "nodejs8.10",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": []
+        },
+        "triggers": []
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "23dbcdd3-df4e-46df-ab67-d5e51deec794",
+    "openFiles": [
+      "31309a03-01a0-4cf6-9dc4-6bfe493a41b6"
+    ],
+    "currentFileId": "31309a03-01a0-4cf6-9dc4-6bfe493a41b6",
+    "resources": {
+      "s3hirutest123": {
+        "name": "s3hirutest123",
+        "type": "S3",
+        "config": {
+          "mode": 0,
+          "bucket": {
+            "region": "us-east-1",
+            "name": "hiru.test123"
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "dialect": null,
+      "definitions": {}
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "javascript",
+          "version": "2.176.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "projectName": "hiru0508_creates3",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1564995970984
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "hiru0508_creates3",
+      "url": "https://github.com/HirudineeADRT/hiru0508_creates3",
+      "branches": []
+    }
+  }
+}
