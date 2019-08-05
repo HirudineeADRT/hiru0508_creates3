@@ -3,7 +3,7 @@ const s3 = new AWS.S3();
 
 exports.handler = function (event, context, callback) {
     s3.listObjects({
-        'Bucket': 'hiru.test123',
+        'Bucket': 'hiru.test',
         'MaxKeys': 10,
         'Prefix': ''
     }).promise()
